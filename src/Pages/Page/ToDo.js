@@ -1,12 +1,9 @@
 import React from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import auth from '../../firebase.init';
 import axios from 'axios';
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 
 
 const ToDo = () => {
-    const [user] = useAuthState(auth);
 
     const handleAddItem = event => {
         event.preventDefault();
@@ -22,7 +19,7 @@ const ToDo = () => {
         }
 
 
-        axios.post('https://protected-journey-65851.herokuapp.com/tool', addItem)
+        axios.post('http://localhost:3000/todo', addItem)
 
             .then(Response => {
                 const { data } = Response;
@@ -45,7 +42,7 @@ const ToDo = () => {
                         <h2 className='text-xl text-primary font-bold'>Add A Product</h2>
                         <form onSubmit={handleAddItem} className='register'>
                             <input type="text" name="name" placeholder="Name" class="input input-bordered w-full max-w-xs my-3" />
-                            <input type="text" name="minimumQuantity" placeholder="Minimum Order" class="input input-bordered w-full max-w-xs" />
+                            <input type="text" name="minimumQuantity" placeholder="Minimum Order" class="input input-bordered w-full max-w-xs mb-3" />
                             <input type="text" name="availableQuantity" placeholder="Available Order" class="input input-bordered w-full max-w-xs" />
                             <textarea class="textarea textarea-bordered w-full max-w-xs my-2" name="description" placeholder="Write Description"></textarea>
                             <input className='input input-bordered w-full max-w-xs mb-3' type="number" name="price" placeholder='price' id="" /><br />
@@ -54,11 +51,12 @@ const ToDo = () => {
                             <input className='w-full max-w-xs text-primary uppercase font-bold' type="submit" value="Add item" />
 
                         </form>
-
+                        <ToastContainer />
                     </div>
                 </div>
 
             </div>
+           
         </div>
     );
 };
