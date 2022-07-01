@@ -6,6 +6,7 @@ import Footer from './Pages/Home/Footer';
 import Tasks from './Pages/Page/Tasks';
 import ToDo from './Pages/Page/ToDo';
 import Calendar from './Pages/Page/Calendar';
+import UpdateTask from './Pages/Page/UpdateTask';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path='/home' element={<Home></Home>}></Route>
         <Route path='/task' element={<Tasks></Tasks>}></Route>
         <Route path='/todo' element={<ToDo></ToDo>}></Route>
+        <Route path='/update/:id' element={<UpdateTask></UpdateTask>}></Route>
         <Route path='/calendar' element={<Calendar></Calendar>}></Route>
       </Routes>
       <Footer></Footer>
